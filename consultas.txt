@@ -19,7 +19,7 @@ Out[110]: <QuerySet [<Article: Aranhas dominam a Autrália e formam nova nação
 reporters = Reporter.objects.filter(article__pub_date__year=2021).annotate(num_articles = Count('article')).order_by('-num_articles')[:1]
 
 In [171]: reporters
-Out[171]: <QuerySet [<Reporter: Arthur Cordeiro>]>
+Out[171]: <QuerySet [<Reporter: João Vitor Waldrich>]>
 ====================================================================
 
 -> artigos que contenham a palvra "python"
