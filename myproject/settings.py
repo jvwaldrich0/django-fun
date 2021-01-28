@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles'
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -127,5 +127,4 @@ LOGIN_REDIRECT_URL = "dashboard"
 LOGOUT_REDIRECT_URL = "dashboard"
 
 EMAIL_HOST = "localhost"
-
 EMAIL_PORT = 1025

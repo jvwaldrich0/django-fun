@@ -19,6 +19,6 @@ from django.conf.urls import url
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pokemaoc/', include('pokemaoc.urls')), 
+    path('pokemaoc/', include('pokemaoc.urls')),
     url(r"^", include("users.urls")),
 ]

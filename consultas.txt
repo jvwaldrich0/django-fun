@@ -1,0 +1,58 @@
+-> todas os artigos de determinado reporter X
+====================================================================
+p = Article.objects.filter(reporter_id = 1)
+
+p
+<QuerySet [<Article: Django lets you build Web apps easily>, <Article: Testando isso aqui>]>
+====================================================================
+
+-> todos os artigos de entre 2005-2025
+====================================================================
+In [109]: p2 = Article.objects.filter(pub_date__lte =  "2025-12-31").filter(pub_date__gt = "2005-01-01")
+
+In [110]: p2
+Out[110]: <QuerySet [<Article: Aranhas dominam a Autrália e formam nova nação>, <Article: Django lets you build Web apps easily>, <Article: Python entra em colapso>, <Article: Testando isso aqui>]>
+====================================================================
+
+-> o reporter com mais artigos em 2021
+====================================================================
+reporters = Reporter.objects.filter(article__pub_date__year=2021).annotate(num_articles = Count('article')).order_by('-num_articles')[:1]
+
+In [171]: reporters
+Out[171]: <QuerySet [<Reporter: Arthur Cordeiro>]>
+====================================================================
+
+-> artigos que contenham a palvra "python"
+ e tenham sido publicados por determinado reporter em janeiro de 2021
+====================================================================
+In [115]: p4 = Article.objects.filter(pub_date__month = "01").filter(pub_date__year = "2021").filter(headline__icontains = "python")
+
+In [116]: p4
+Out[116]: <QuerySet [<Article: Python entra em colapso>]>
+====================================================================
+
+-> A quantidade de publicacoes que tenham 
+a letra "i"
+====================================================================
+In [117]: p5 = Publication.objects.filter(title__icontains = "i").count()
+
+In [118]: p5
+Out[118]: 9
+====================================================================
+
+-> A media de publicacoes por artigos
+====================================================================
+In [202]: artigos = Article.objects.annotate(num_pub = Count('publications')).aggregate(Avg('num_pub'))
+
+In [203]: artigos
+Out[203]: {'num_pub__avg': 2.125}
+====================================================================
+
+
+
+ 
+
+
+
+
+
